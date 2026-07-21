@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Landmark, Code2, Cpu, ArrowRight } from 'lucide-react';
+import { Briefcase, Landmark, Code2, Cpu, ArrowRight, GraduationCap } from 'lucide-react';
 
 const experiences = [
   {
@@ -29,6 +29,15 @@ const experiences = [
     skills: ['Laravel', 'Google Drive API', 'WebSockets', 'PHP'],
     icon: Briefcase,
     color: 'neon-pink'
+  },
+  {
+    company: 'I.E.P Peruano Americano',
+    role: 'Desarrollador Fullstack Freelance',
+    period: '09/2023 - 12/2023',
+    desc: 'Sistema integral de gestión académica para más de 700 estudiantes: APIs RESTful para matrícula y pagos, triggers en base de datos para automatizar estados de matrícula y cronogramas de pago, y seguridad con Spring Security, OAuth 2.0 y JWT.',
+    skills: ['Java 17', 'Spring Boot', 'Spring Security', 'PostgreSQL', 'React'],
+    icon: GraduationCap,
+    color: 'neon-cyan'
   },
 ];
 

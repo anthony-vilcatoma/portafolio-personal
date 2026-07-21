@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Code2, Smartphone, Shield, MessageSquare, Monitor,
   Activity, BarChart2, ShoppingBag, Users, Tv, X,
-  ChevronRight, Image as ImageIcon
+  ChevronRight, ChevronLeft, Image as ImageIcon, ExternalLink
 } from 'lucide-react';
 
 const projects = [
@@ -17,7 +17,7 @@ const projects = [
     achievement: 'Desarrollado en su totalidad — frontend, backend, autenticación con Active Directory, jobs programados y pipelines de despliegue.',
     color: 'neon-cyan',
     icon: Code2,
-    screenshot: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+    screenshots: ['/Proyectos/opp/1.png'],
     extended: 'Sistema de doble capa diseñado para soportar la operativa institucional de la OPP. El sistema legacy mantiene la lógica de negocio histórica en .NET Framework 4.8 con autenticación integrada al Active Directory corporativo vía System.DirectoryServices. La nueva API (OPPAPI) en .NET 9 expone endpoints REST consumidos por aseguradoras externas, con EF Core 8, Dapper para consultas complejas y pipelines dedicados en Azure DevOps (OPP_MVC + OPP_Inspecciones). Todo el stack fue construido desde cero: diseño de base de datos, arquitectura en capas, frontend en Angular, autenticación AD y CI/CD.',
   },
   {
@@ -30,7 +30,7 @@ const projects = [
     achievement: 'Pipeline CI/CD multi-stage: Build (Angular + .NET) → Deploy a IIS con backup automático agrupado por fecha/hora.',
     color: 'neon-purple',
     icon: Monitor,
-    screenshot: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80',
+    screenshots: ['/Proyectos/next/1.png', '/Proyectos/next/2.png', '/Proyectos/next/3.png', '/Proyectos/next/4.png'],
     extended: 'Ecosistema compuesto por tres subcomponentes: WicQ (core del sistema de colas, migrado de .NET Framework 4.8 a .NET 6 y Angular 9 → 20), TNVideoCall (módulo de videollamadas para atención virtual con AWS Chime SDK en .NET Core 3.1 y Amazon CDK) y TvWin (aplicación UWP para televisores de sala de espera que muestra y anuncia turnos en tiempo real). El desarrollador construyó y configuró el pipeline CI/CD en Azure DevOps con etapas de Build separadas para Angular y .NET, seguidas de Deploy a IIS con backup automático nombrado por fecha y hora. Comunicaciones via Twilio (SMS/voz) y MailKit (email). Autenticación LDAP con LdapForNet.',
   },
   {
@@ -43,7 +43,7 @@ const projects = [
     achievement: 'Integración completa en las 3 capas: APIs .NET en EC2, modelos IA Python/PyTorch y servicios AWS (Rekognition, S3, Lambda).',
     color: 'neon-pink',
     icon: Shield,
-    screenshot: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80',
+    screenshots: ['/Proyectos/ifence/1.png', '/Proyectos/ifence/2.png'],
     extended: 'Sistema de múltiples capas orquestadas: la capa .NET (APIProcess, BackOffice, BusinessServer, OnPremisse, Transmisor) gestiona la captura de frames y su envío al API Python para inferencia. Los modelos IA (EfficientNetV2, ConvNeXt, Inception v3, MobileNet v3, ResNet101, Video Swin-T) fueron entrenados con PyTorch. El reconocimiento facial se implementó con Emgu.CV v4.10. La capa AWS usa Rekognition para detección adicional, S3 para almacenamiento de evidencias, STS para seguridad y Lambda para procesamiento serverless. El BackOffice en Angular 15 permite gestión y monitoreo. Desplegado con Docker Compose en Amazon Linux EC2. CI/CD vía Bitbucket Pipelines.',
   },
   {
@@ -56,7 +56,8 @@ const projects = [
     achievement: 'Migración a través de 3 versiones tecnológicas hasta RAG con Azure OpenAI en producción.',
     color: 'neon-cyan',
     icon: MessageSquare,
-    screenshot: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=800&q=80',
+    screenshots: ['/Proyectos/frutilina/1.png'],
+    link: 'https://wic.pr.gov/',
     extended: 'El chatbot pasó por tres generaciones tecnológicas: v1 (WIC_Chatbot) en .NET Core 3.1 con Bot Framework 4.14, LUIS y QnA Maker con diálogos adaptativos; v2 (WIC_Chatbot2) con Bot Framework 4.15 y AdaptiveExpressions; v3 actual (WIC.Frutilina) en .NET 8 con Bot Builder 4.22, Microsoft Copilot Studio, Azure AI Language Conversations, Azure OpenAI GPT y RAG sobre documentos institutcionales usando Azure Cognitive Search. Incluye automatización web headless con Playwright y PuppeteerSharp para consultas en portales externos, Azure Functions (.NET 6) para lógica serverless y almacenamiento en Azure Blob Storage, Queue y Files.',
   },
   {
@@ -69,7 +70,8 @@ const projects = [
     achievement: 'Migración completa Xamarin.Forms → .NET MAUI e implementación del API Gateway con Ocelot v16.',
     color: 'neon-purple',
     icon: Smartphone,
-    screenshot: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80',
+    screenshots: ['/Proyectos/ases-mobile/1.png', '/Proyectos/ases-mobile/2.png', '/Proyectos/ases-mobile/3.png', '/Proyectos/ases-mobile/4.png', '/Proyectos/ases-mobile/5.png'],
+    fit: 'contain',
     extended: 'La app mobile corre en Android, iOS y macCatalyst usando .NET MAUI net8.0. La UI está construida con Telerik UI for MAUI v6.8.0 y SkiaSharp. La versión previa usaba Xamarin.Forms 5.0 con Telerik UI for Xamarin v2020.3 y Prism 8.1. El API Gateway implementado con Ocelot v16 centraliza el enrutamiento hacia la API REST en .NET Core 3.1 (AsesMobileAPI) con EF Core 5 y AutoMapper. La autenticación se maneja con IdentityServer4 y IdentityModel.OidcClient. Push notifications con Azure Notification Hubs, Firebase (FCM) y AppCenter. Archivos en AWS S3. Azure DevOps gestiona 3 pipelines independientes: Android, Mensajería y principal.',
   },
   {
@@ -82,7 +84,7 @@ const projects = [
     achievement: 'Desarrollado desde cero — incluye diseño y desarrollo de todos los reportes Telerik (.trdp) institucionales.',
     color: 'neon-pink',
     icon: Activity,
-    screenshot: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    screenshots: ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'],
     extended: 'Sistema construido en .NET 8 (AsesComplaint) con un BackOffice legado en .NET Core 3.1 (MedicaidBackOffice). Frontend en Angular 18 para la app principal y Angular 9 para el BackOffice. El API Gateway usa Ocelot v16. EF Core 9 con AutoMapper y LightInject para inyección de dependencias. Los reportes Telerik Reporting v18.2.24.924 incluyen: Casos por fecha de vencimiento, Casos por representante y otros reportes institucionales, todos diseñados y desarrollados en .trdp. Almacenamiento de archivos en AWS S3 (AWSSDK.S3) y Google Cloud Storage. Autenticación con Azure Identity. Notificaciones por email con SendGrid. Logging dual: log4net y Serilog. CI/CD con Azure Pipelines.',
   },
   {
@@ -95,7 +97,7 @@ const projects = [
     achievement: 'Unificación de todos los módulos dispersos en una sola API — NewMIS360API — con firma digital AdobeSign integrada.',
     color: 'neon-cyan',
     icon: ShoppingBag,
-    screenshot: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80',
+    screenshots: ['/Proyectos/comerciantes/1.png'],
     extended: 'El proyecto unificó WICSeleccionComerciantes (.NET Core 3.1) y el portal Angular 10 (WicPortal) en la nueva API NewMIS360API (.NET 6) con Angular 16 y BackOffice en Angular 22. Módulos desarrollados: selección y gestión de comerciantes, gestión de instalaciones WICPR, generación de reportes Excel (ClosedXML, EPPlus) y PDF (iText7, iTextSharp), notificaciones por email (SendGrid, MailKit) y SMS (Twilio), firma digital de contratos con AdobeSign REST, y transferencia de archivos a servidores externos con SSH.NET. Validaciones con FluentValidation. Docker Compose para entornos y Azure Pipelines multi-environment (QA + Producción).',
   },
   {
@@ -108,7 +110,7 @@ const projects = [
     achievement: 'APIs diferenciadas por rol con comunicaciones multicanal (Twilio, Sinch, SendGrid) en producción.',
     color: 'neon-purple',
     icon: Users,
-    screenshot: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80',
+    screenshots: ['/Proyectos/consejeras-pares/1.png'],
     extended: 'Sistema con tres APIs independientes en .NET Core 3.1: ConsejerasParesAPI (gestión de consejeras), CounselorsAPI y ParticipantsAPI. Frontend dual: Angular 11 PWA para acceso móvil y Angular 13 para la web. Base de datos mixta: SQL Server para datos institucionales y SQLite para operación offline. Las comunicaciones multicanal incluyen SMS via Twilio y Sinch (alternativo), email con SendGrid y MailKit. Generación de documentos con DocumentFormat.OpenXml. Despliegue con Docker Compose y CI/CD con Azure Pipelines.',
   },
   {
@@ -121,7 +123,7 @@ const projects = [
     achievement: 'Diseño y desarrollo de todos los reportes SSRS para estadísticas institucionales de violencia.',
     color: 'neon-pink',
     icon: BarChart2,
-    screenshot: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80',
+    screenshots: ['/Proyectos/cavv/1.png'],
     extended: 'El sistema CAVV (.NET Framework 4.6.1) centraliza la gestión y el observatorio de casos. CavvMonitoreo (.NET 4.5.2) expone servicios internos vía WCF (Windows Communication Foundation) e integra SQL Server para todo el acceso a datos con Entity Framework 6. Los reportes SSRS (SQL Server Reporting Services) fueron diseñados y desarrollados completamente por el desarrollador: estadísticas de violencia por tipo y período, seguimiento de casos por estado, y otros reportes institucionales. Se usa Microsoft.ReportViewer.2012.Runtime v11.0 con ReportViewerForMvc. Frontend en ASP.NET MVC con jQuery. CI/CD con Azure Pipelines.',
   },
   {
@@ -134,7 +136,7 @@ const projects = [
     achievement: 'Módulo UWP especializado para visualización y anuncio en tiempo real de turnos en sala de espera.',
     color: 'neon-cyan',
     icon: Tv,
-    screenshot: 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=800&q=80',
+    screenshots: ['/Proyectos/tvwin/1.jpeg', '/Proyectos/tvwin/2.jpeg', '/Proyectos/tvwin/3.png'],
     extended: 'Aplicación UWP diseñada para ejecutarse en televisores de sala de espera dentro del ecosistema Next/WicQ. Conecta a SQL Server vía Microsoft.Data.SqlClient y Entity Framework Core para obtener el estado de turnos en tiempo real. El sistema de logging usa Serilog para diagnóstico remoto. La app es parte integral del flujo de atención: cuando un operador llama un turno en WicQ, TvWin lo muestra y anuncia automáticamente en la pantalla del televisor.',
   },
 ];
@@ -156,6 +158,56 @@ const ScreenshotPlaceholder = ({ icon: Icon, color, title }) => {
         <ImageIcon className="w-3.5 h-3.5" />
         <span className="text-xs font-medium">Captura del proyecto</span>
       </div>
+    </div>
+  );
+};
+
+const Carousel = ({ images, alt, fit = 'cover' }) => {
+  const [index, setIndex] = useState(0);
+  const hasMultiple = images.length > 1;
+
+  const prev = (e) => {
+    e.stopPropagation();
+    setIndex(i => (i - 1 + images.length) % images.length);
+  };
+  const next = (e) => {
+    e.stopPropagation();
+    setIndex(i => (i + 1) % images.length);
+  };
+
+  return (
+    <div className="relative w-full h-full bg-[var(--bg-surface)]">
+      <img
+        src={images[index]}
+        alt={alt}
+        className={`w-full h-full ${fit === 'contain' ? 'object-contain' : 'object-cover'} transition-opacity duration-300`}
+      />
+
+      {hasMultiple && (
+        <>
+          <button
+            onClick={prev}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-black/80 transition-colors z-20"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={next}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-black/80 transition-colors z-20"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-20">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => { e.stopPropagation(); setIndex(i); }}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? 'w-5 bg-white' : 'w-1.5 bg-white/40'}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
@@ -186,11 +238,11 @@ const Modal = ({ project, onClose }) => {
         >
           {/* Screenshot area */}
           <div className="relative aspect-video w-full overflow-hidden rounded-t-3xl">
-            {project.screenshot
-              ? <img src={project.screenshot} alt={project.title} className="w-full h-full object-cover" />
+            {project.screenshots?.length
+              ? <Carousel images={project.screenshots} alt={project.title} fit={project.fit} />
               : <ScreenshotPlaceholder icon={Icon} color={project.color} title={project.title} />
             }
-            <div className="absolute inset-0 bg-gradient-to-t from-[#07070f] via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07070f] via-transparent to-transparent pointer-events-none" />
           </div>
 
           <button
@@ -229,6 +281,18 @@ const Modal = ({ project, onClose }) => {
               <ChevronRight className={`w-4 h-4 mt-0.5 shrink-0 ${c.text}`} />
               <p className={`text-sm font-medium ${c.text}`}>{project.achievement}</p>
             </div>
+
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border ${c.tag} font-bold text-xs uppercase tracking-widest transition-all duration-200 hover:brightness-125`}
+              >
+                Visitar sitio en producción
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            )}
           </div>
         </motion.div>
       </motion.div>
@@ -258,12 +322,12 @@ const ProjectCard = ({ project, index, onOpen }) => {
       >
         {/* Screenshot / Placeholder */}
         <div className="relative aspect-video w-full overflow-hidden bg-[var(--bg-surface)] shrink-0">
-          {project.screenshot
+          {project.screenshots?.length
             ? (
               <img
-                src={project.screenshot}
+                src={project.screenshots[0]}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className={`w-full h-full ${project.fit === 'contain' ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-105`}
               />
             )
             : <ScreenshotPlaceholder icon={Icon} color={project.color} title={project.title} />
@@ -277,8 +341,30 @@ const ProjectCard = ({ project, index, onOpen }) => {
             </span>
           </div>
 
+          {/* Gallery count badge */}
+          {project.screenshots?.length > 1 && (
+            <div className="absolute bottom-3 right-3">
+              <span className="inline-flex items-center gap-1 text-[9px] font-bold px-2.5 py-1 rounded-full border border-white/10 bg-black/50 text-white backdrop-blur-md">
+                <ImageIcon className="w-3 h-3" />
+                {project.screenshots.length}
+              </span>
+            </div>
+          )}
+
           {/* Icon badge */}
-          <div className="absolute top-3 right-3">
+          <div className="absolute top-3 right-3 flex items-center gap-2">
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={e => e.stopPropagation()}
+                className={`w-9 h-9 rounded-xl flex items-center justify-center border ${c.icon} backdrop-blur-md hover:brightness-125 transition-all`}
+                title="Visitar sitio en producción"
+              >
+                <ExternalLink className={`w-4 h-4 ${c.text}`} />
+              </a>
+            )}
             <div className={`w-9 h-9 rounded-xl flex items-center justify-center border ${c.icon} backdrop-blur-md`}>
               <Icon className={`w-4 h-4 ${c.text}`} />
             </div>

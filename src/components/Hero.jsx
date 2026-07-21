@@ -35,7 +35,7 @@ const Hero = () => {
             className="h-[2px] bg-neon-cyan mb-6"
           />
           <span className="text-neon-cyan font-bold tracking-[0.3em] text-xs md:text-sm uppercase mb-4 block">
-            Senior Fullstack Developer
+            Semi-Senior Fullstack Developer
           </span>
           <h1 className="text-6xl md:text-8xl font-title font-bold mb-6 tracking-tighter leading-[0.9] drop-shadow-2xl text-[var(--text-primary)]">
             Anthony <br />
