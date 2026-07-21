@@ -110,9 +110,10 @@ const Hero = () => {
             <div className="relative w-72 h-[400px] md:w-[22rem] md:h-[500px] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform transition-transform duration-700 group-hover:scale-[1.02]">
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 mix-blend-overlay"></div>
               <img 
-                src="/1774394516921.jpeg" 
+                src="/PerfilOficial.jpeg" 
                 alt="Anthony Vilcatoma" 
-                className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100 grayscale-[50%] group-hover:grayscale-0"
+                className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100"
+                style={{ filter: 'brightness(1.12) contrast(0.92) saturate(1.05) blur(0.4px)' }}
               />
             </div>
           </div>
