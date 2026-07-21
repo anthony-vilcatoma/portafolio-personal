@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  --color-premium-dark: #050510;
+  --color-neon-cyan: #00f3ff;
+  --color-neon-purple: #bd00ff;
+  --color-neon-pink: #ff00a0;
+  --color-premium-soft-white: #f0f4f8;
+
+  --font-title: "Outfit", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* ── Theme variables ── */
+html.dark {
+  --bg-base:     #050510;
+  --bg-surface:  #07070f;
+  --bg-card:     rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --text-primary:   #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted:     #6b7280;
+  --border-subtle:  rgba(255,255,255,0.05);
+  --border-muted:   rgba(255,255,255,0.10);
+  --scrollbar-track: #050510;
+}
+
+html:not(.dark) {
+  /* Neon overrides — readable on light backgrounds */
+  --color-neon-cyan:   #0369a1;   /* sky-700   — buen contraste sobre blanco */
+  --color-neon-purple: #6d28d9;   /* violet-700 — rico, legible              */
+  --color-neon-pink:   #be185d;   /* pink-700  — rosa profundo, legible       */
+
+  /* Fondos con jerarquía clara */
+  --bg-base:       #f5f7ff;       /* blanco-índigo muy suave                 */
+  --bg-surface:    #eaecf9;       /* superficie ligeramente más azul         */
+  --bg-card:       #ffffff;       /* cards puro blanco para máximo contraste */
+  --bg-card-hover: #f0f4ff;
+
+  /* Textos con contraste WCAG AA */
+  --text-primary:   #0c1033;      /* navy muy oscuro                         */
+  --text-secondary: #1e2a5e;      /* navy medio, legible y premium           */
+  --text-muted:     #4a5580;      /* azul-gris readable                      */
+
+  /* Bordes con tinte índigo */
+  --border-subtle: rgba(67,56,202,0.10);
+  --border-muted:  rgba(67,56,202,0.20);
+
+  --scrollbar-track: #eaecf9;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    transition: background-color 0.4s ease, color 0.4s ease;
+    position: relative;
+  }
+
+  /* Noise texture */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-muted);
+    box-shadow: 0 8px 32px 0 rgba(189,0,255,0.05);
+  }
+  .dark .glass {
+    box-shadow: 0 8px 32px 0 rgba(0,243,255,0.08);
+  }
+  /* Elevación de cards en modo claro */
+  html:not(.dark) .glass {
+    box-shadow: 0 2px 8px rgba(12,16,51,0.06), 0 8px 28px rgba(12,16,51,0.08);
+  }
+  
+  .text-gradient-neon {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-[length:200%_auto] animate-[gradient_4s_ease-in-out_infinite];
+  }
+  
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan to-blue-500;
+  }
+
+  .neon-glow {
+    @apply shadow-[0_0_15px_rgba(0,243,255,0.5)] border-neon-cyan/50;
+  }
+  
+  .neon-glow-purple {
+    @apply shadow-[0_0_15px_rgba(189,0,255,0.5)] border-neon-purple/50;
+  }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}
+
+/* ── Light mode elevación de cards ── */
+html:not(.dark) [class*="rounded-2xl"][class*="bg-[var(--bg-card)]"],
+html:not(.dark) [class*="rounded-3xl"][class*="glass"] {
+  box-shadow: 0 1px 4px rgba(12,16,51,0.05), 0 6px 20px rgba(12,16,51,0.07);
+}
+
+/* Hero grid overlay más visible en light */
+html:not(.dark) .bg-\[linear-gradient\(rgba\(255\2C 255\2C 255\2C 0\.02\) {
+  opacity: 0.06;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background-color: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background-color: #bd00ff; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background-color: #00f3ff; }
